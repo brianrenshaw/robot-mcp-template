@@ -1,0 +1,6 @@
+# Settings for running on your own computer only. Copy this file to .dev.vars (which is never
+# committed). None of these values are used by the deployed server.
+ENVIRONMENT=local
+PUBLIC_URL=http://localhost:8787
+MCP_TOKEN=testtoken
+OWNER_EMAIL=you@example.com

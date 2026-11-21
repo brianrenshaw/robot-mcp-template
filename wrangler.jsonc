@@ -1,0 +1,31 @@
+// The server's settings. Three things here are yours to fill in: the name, the database id
+// and PUBLIC_URL. The two ACCESS_ values come from Cloudflare Access (see the README).
+// Secrets (MCP_TOKEN, OWNER_EMAIL) are NOT kept here: set them with `wrangler secret put`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "my-mcp-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "my-mcp-server",
+      "database_id": "REPLACE-WITH-YOUR-DATABASE-ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    // The address this server is deployed at, with no slash at the end. Chat apps are told to
+    // sign in here, so it has to be exactly right.
+    "PUBLIC_URL": "https://my-mcp-server.YOUR-SUBDOMAIN.workers.dev",
+    // Cloudflare Access protects the /authorize sign-in page and nothing else. If either of
+    // these is empty, the sign-in page refuses everyone.
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": ""
+  },
+  "observability": { "enabled": true }
+}

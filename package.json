@@ -1,0 +1,28 @@
+{
+  "name": "my-mcp-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc -p tsconfig.json",
+    "migrate:local": "wrangler d1 migrations apply DB --local",
+    "migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "smoke": "tsx scripts/smoke.ts",
+    "smoke:oauth": "tsx scripts/oauth-smoke.ts"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^1.2.4",
+    "@modelcontextprotocol/server": "2.4.0",
+    "agents": "^0.33.0",
+    "jose": "^6.2.17",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261113.1",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "5.9",
+    "wrangler": "^4.161.0"
+  }
+}
